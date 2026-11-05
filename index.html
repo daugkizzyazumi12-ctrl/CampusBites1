@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CampusBites: feedback</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="aura-bg" aria-hidden="true">
+  <div class="aura-layer-1"></div>
+  <div class="aura-layer-2"></div>
+  <div class="aura-grain">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <filter id="grain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="4" stitchTiles="stitch"/>
+        <feColorMatrix type="matrix" values="0.181 0.608 0.061 0 0.075 0.181 0.608 0.061 0 0.075 0.181 0.608 0.061 0 0.075 0 0 0 1 0"/>
+      </filter>
+      <rect width="100%" height="100%" filter="url(#grain)"/>
+    </svg>
+  </div>
+</div>
+
+
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="#feedback" aria-label="CampusBites, home">
+      <span class="logo" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v8M4 3v5a3 3 0 0 0 6 0V3M7 11v10"/><path d="M17 21V3c-2.5 1.5-3.5 4-3.5 7 0 2 1 3 3.5 3"/></svg>
+      </span>
+      CampusBites
+    </a>
+    <nav aria-label="Main">
+      <a href="#feedback" id="nav-form">Give feedback</a>
+      <a href="#responses" id="nav-responses">Responses <span class="badge" id="count">0</span></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section id="screen-form" aria-labelledby="form-title">
+    <div class="hero">
+      <p class="eyebrow">A better canteen, together</p>
+      <h1 id="form-title">How was your meal?</h1>
+      <p class="lead">A little feedback goes a long way. Tell us about your visit so we can make everyday dining better for everyone.</p>
+      <p class="meta">
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> About 2 minutes</span>
+        <span>All questions required unless marked optional.</span>
+      </p>
+    </div>
+
+    <form id="feedback-form" class="card" novalidate>
+      <div id="summary" class="summary" role="alert" tabindex="-1" hidden></div>
+
+      <section class="block" aria-labelledby="h-visit">
+        <h2 id="h-visit"><span class="num">01</span> Your visit</h2>
+        <div class="two">
+          <div class="field" data-field="date">
+            <label for="date">Date of visit</label>
+            <input type="date" id="date" name="date" required>
+            <p class="err" id="err-date"></p>
+          </div>
+          <fieldset class="field" data-field="meal">
+            <legend>Which meal did you have?</legend>
+            <div class="seg">
+              <label><input type="radio" name="meal" value="Breakfast"><span>Breakfast</span></label>
+              <label><input type="radio" name="meal" value="Lunch"><span>Lunch</span></label>
+              <label><input type="radio" name="meal" value="Dinner"><span>Dinner</span></label>
+            </div>
+            <p class="err" id="err-meal"></p>
+          </fieldset>
+        </div>
+      </section>
+
+      <section class="block" aria-labelledby="h-exp">
+        <h2 id="h-exp"><span class="num">02</span> Your dining experience</h2>
+        <p class="hint">Choose one rating for each. Go with what feels right.</p>
+        <p class="legend">1 = Poor, 5 = Excellent</p>
+        <div class="matrix" id="ratings"></div>
+
+        <fieldset class="field sat" data-field="satisfaction">
+          <legend>Overall, how satisfied are you with your visit?</legend>
+          <div class="seg faces">
+            <label><input type="radio" name="satisfaction" value="1"><span><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="9" cy="10" r=".6" fill="currentColor"/><circle cx="15" cy="10" r=".6" fill="currentColor"/><path d="M8 17c1.3-2.6 6.7-2.6 8 0"/><path d="M7 7.8l3 1M17 7.8l-3 1"/></svg>Very dissatisfied</span></label>
+            <label><input type="radio" name="satisfaction" value="2"><span><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="9" cy="10" r=".6" fill="currentColor"/><circle cx="15" cy="10" r=".6" fill="currentColor"/><path d="M8.5 16.8c1.2-1.8 5.8-1.8 7 0"/></svg>Dissatisfied</span></label>
+            <label><input type="radio" name="satisfaction" value="3"><span><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="9" cy="10" r=".6" fill="currentColor"/><circle cx="15" cy="10" r=".6" fill="currentColor"/><path d="M8.5 15.5h7"/></svg>Neutral</span></label>
+            <label><input type="radio" name="satisfaction" value="4"><span><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="9" cy="10" r=".6" fill="currentColor"/><circle cx="15" cy="10" r=".6" fill="currentColor"/><path d="M8.5 14.5c1.2 2 5.8 2 7 0"/></svg>Satisfied</span></label>
+            <label><input type="radio" name="satisfaction" value="5"><span><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="9" cy="10" r=".6" fill="currentColor"/><circle cx="15" cy="10" r=".6" fill="currentColor"/><path d="M8 14c1.3 3 6.7 3 8 0"/></svg>Very satisfied</span></label>
+          </div>
+          <p class="err" id="err-satisfaction"></p>
+        </fieldset>
+      </section>
+
+      <section class="block" aria-labelledby="h-more">
+        <h2 id="h-more"><span class="num">03</span> Anything else to share?</h2>
+        <p class="hint">A favorite dish, something to improve, or an idea for the menu. We&rsquo;re listening.</p>
+        <div class="field" data-field="suggestions">
+          <label for="suggestions">Your suggestions <span class="opt">(optional)</span></label>
+          <textarea id="suggestions" name="suggestions" maxlength="500" placeholder="What worked well? What could we do better?"></textarea>
+          <div class="counter" id="counter" aria-live="polite">0 / 500</div>
+          <p class="err" id="err-suggestions"></p>
+        </div>
+        <div class="follow">
+          <p>Happy for us to follow up? Leave your details below.</p>
+          <div class="two">
+            <div class="field" data-field="name">
+              <label for="name">Name <span class="opt">(optional)</span></label>
+              <input type="text" id="name" name="name" maxlength="60" placeholder="Your name" autocomplete="name">
+              <p class="err" id="err-name"></p>
+            </div>
+            <div class="field" data-field="email">
+              <label for="email">Email address <span class="opt">(optional)</span></label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
+              <p class="err" id="err-email"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="foot">
+        <p class="privacy"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        Your feedback is confidential. Contact details are only used to follow up on your comments.</p>
+        <button type="submit" class="btn">Send feedback <span aria-hidden="true">&rsaquo;</span></button>
+      </div>
+    </form>
+  </section>
+
+  <!-- SCREEN 2: supporting screen -->
+  <section id="screen-responses" aria-labelledby="resp-title" hidden>
+    <div class="hero row-hero">
+      <div>
+        <p class="eyebrow">Community voice</p>
+        <h1 id="resp-title">Recent feedback</h1>
+        <p class="lead">Submitted responses from this session, newest first.</p>
+      </div>
+      <a class="btn" href="#feedback">Add feedback</a>
+    </div>
+    <div class="toast" id="toast" role="status" hidden>Thanks! Your feedback was sent.</div>
+    <ul class="list" id="list"></ul>
+    <div class="card empty" id="empty">
+      <div class="zero" aria-hidden="true">0</div>
+      <h2>No responses yet</h2>
+      <p>Be the first to tell us about your canteen experience.</p>
+      <a class="btn ghost" href="#feedback">Start feedback</a>
+    </div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
